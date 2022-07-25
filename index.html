@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IED learning</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/edu.png">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css?v=1.2">
+  <style>
+    #loading {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="hold-transition " style="/* min-height: 493.396px; */display: flex;/* text-align: center; */align-items: center;justify-content: center;">
+  <div class="login-box">
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+
+        <img src="img/logo.png">
+      </div>
+      <div class="card-body" id="login">
+        <h2 class="login-box-msg">Iniciar Sesion</h2>
+        <!-- <div class="alert alert-danger " id="campos" role="alert">
+        Debes de llenar los campos!
+      </div> -->
+        <form id="form">
+          <label for="">Correo electronico</label>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="" id="usuario">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <label for="">Contraseña</label>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="" id="clave">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+            <!-- /.col -->
+            <div class="col-12">
+              <button type="button" class="btn btn-primary btn-block" onclick="login()">Iniciar Sesión</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <div class="social-auth-links text-center mt-2 mb-4">
+
+          <div id="mensaje"></div>
+          <div class="btn btn-block btn-danger" id="loading">cargando...</div>
+
+        </div>
+        <p class="text-center">
+          ¿No tienes cuenta? <a id="register_button" style="color: blue;cursor:pointer">Registrate</a>
+        </p>
+        <br>
+        <div class="footer">
+          <label>IEDLEARN</label>
+        </div>
+
+      </div>
+      <div class="card-body" id="register" style="display: none;">
+        <h2 class="login-box-msg">Registrate</h2>
+        <!-- <div class="alert alert-danger " id="campos" role="alert">
+        Debes de llenar los campos!
+      </div> -->
+        <form id="form2">
+          <label for="">Nombre completo</label>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="" id="name_register">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          
+          <label for="">Correo electronico</label>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="" id="email_register">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <label for="">Contraseña</label>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="" id="password_register">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+            <!-- /.col -->
+            <div class="col-12">
+              <button type="button" class="btn btn-primary btn-block" onclick="registro()">Registrate</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <div class="social-auth-links text-center mt-2 mb-4">
+
+          <div id="mensaje"></div>
+          <div class="btn btn-block btn-danger" id="loading">cargando...</div>
+
+        </div>
+        <p class="text-center">
+          ¿Ya tienes cuenta? <a id="login_button" style="color: blue;cursor:pointer">Inicia sesion</a>
+        </p>
+        <br>
+        <div class="footer">
+          <label>IEDLEARN</label>
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+  <!-- /.login-box -->
+
+  <!-- jQuery -->
+  <script src="plugins/api.js"></script>
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="cordova.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#register_button").click(function () {
+        $("#login").hide();
+        $("#register").show();
+      });
+      $("#login_button").click(function () {
+        $("#login").show();
+        $("#register").hide();
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
