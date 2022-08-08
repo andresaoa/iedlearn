@@ -115,7 +115,7 @@
               </a>
             </li>
             <li class="sidebar-item pt-2" id="cursos_panel">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html" aria-expanded="false">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="cursos.php" aria-expanded="false">
                 <i class="fas fa-book" aria-hidden="true"></i>
                 <span class="hide-menu">Cursos</span>
               </a>

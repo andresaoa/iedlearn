@@ -1,5 +1,5 @@
 
-//const api = "http://127.0.0.1:8000/api/";
+// const api = "http://127.0.0.1:8000/api/";
 const api = "https://thawing-bayou-03317.herokuapp.com/api/";
 
 var loading = document.getElementById('loading');
@@ -91,13 +91,8 @@ function registro() {
           Swal.fire('Registro exitoso');
           console.log(res.data);
           // variables de sesion
-          token = localStorage.setItem('token', res.data.access_token);
-          usuario_id = localStorage.setItem('usuario_id', res.data.user.id);
-          usuario_nombre = localStorage.setItem('usuario_nombre', res.data.user.name);
-          usuario_email = localStorage.setItem('usuario_email', res.data.user.email);
-          usuario_rol = localStorage.setItem('usuario_rol', res.data.rol.role_id);
-          usuario_phone = localStorage.setItem('usuario_phone', res.data.user.phone);
-          window.location = 'pages/index.php';
+
+          window.location = 'index.html';
         } else {
           Swal.fire('Error al registrar');
         }
