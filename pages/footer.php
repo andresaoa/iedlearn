@@ -37,6 +37,8 @@
 <script src="../assets/plugins/bower_components/chartist/dist/chartist.min.js"></script>
 <script src="../assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
 <script src="../assets/js/pages/dashboards/dashboard1.js"></script>
+
+
 <script>
   $(document).ready(function() {
     validarLogueo();
@@ -61,7 +63,13 @@
     // roles
     if (rol == 2) {
       document.getElementById("usuarios_panel").style.display = "none";
+      document.getElementById("roles_panel").style.display = "none";
+      document.getElementById("cursos_panel").style.display = "none";
+      document.getElementById("evaluaciones_panel").style.display = "none";
+      document.getElementById("resultados_panel").style.display = "none";
+
       console.log("rol 2");
+
     }
     
     document.getElementById("avatar").src = generateAvatar(

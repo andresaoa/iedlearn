@@ -109,9 +109,15 @@
               </a>
             </li>
             <li class="sidebar-item pt-2" id="usuarios_panel">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html" aria-expanded="false">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="usuarios.php" aria-expanded="false">
                 <i class="fas fa-users" aria-hidden="true"></i>
                 <span class="hide-menu">Usuarios</span>
+              </a>
+            </li>
+            <li class="sidebar-item pt-2" id="roles_panel">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="roles.php" aria-expanded="false">
+                <i class="fas fa-cog" aria-hidden="true"></i>
+                <span class="hide-menu">Roles</span>
               </a>
             </li>
             <li class="sidebar-item pt-2" id="cursos_panel">

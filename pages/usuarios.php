@@ -10,7 +10,7 @@
     <div class="page-breadcrumb bg-white">
         <div class="row align-items-center">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 class="page-title">Cursos</h4>
+                <h4 class="page-title">Usuarios</h4>
             </div>
         </div>
         <!-- /.col-lg-12 -->
@@ -32,16 +32,16 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <a href="crear_curso.php" type="button" class="btn btn-primary mb-4">
-                            Crear curso
+                        <a href="crear_usuario.php" type="button" class="btn btn-primary mb-4">
+                            Crear Usuario
                         </a>
                         <div class="table-responsive">
                             <table class="table table-hover" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Titulo</th>
-                                        <th>Descripción</th>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Correo</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -49,30 +49,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- .col -->
-            <div class="col-md-12 col-lg-8 col-sm-12">
-                <div class="card white-box p-0">
-                    <div class="card-body">
-                        <h3 class="box-title mb-0">Cursos Recientes</h3>
-                    </div>
-                    <div class="comment-widgets" id="cursos_recientes">
-                        <!-- Comment Row -->
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12">
-                <div class="card white-box p-0">
-                    <div class="card-heading">
-                        <h3 class="box-title mb-0">Curso Populares</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="chatonline" id="cursos_mas_vistos">
-
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -96,64 +72,35 @@
         token = localStorage.getItem('token');
 
         $.ajax({
-            url: api + 'curses',
+            url: api + 'users',
             headers: {
                 'Authorization': 'Bearer ' + token
             },
             type: 'GET',
             success: function(data) {
 
-                console.log(data.cursos_mas_vistos);
-                cursos_mas_vistos = data.cursos_mas_vistos;
-                cursos_recientes = data.cursos_recientes;
-                cursos_todos = data.cursos_todos;
+                console.log(data.users);
+                usuarios = data.users;
 
-                $.each(cursos_mas_vistos, function(index, value) {
-                    $('#cursos_mas_vistos').append(
-                        '<li>' +
-                        '<a href="ver_curso.php?id=' + value.id + '">' +
-                        '<div class="chat-content">' +
-                        '<h5 class="box-title">' + value.name + '</h5>' +
-                        '<div class="box-content">' +
-                        '<span class="font-weight-bold">' + value.description + '</span>' +
-                        '</div>' +
-                        '</div>' +
-                        '</a>' +
-                        '</li>'
-                    );
-                });
-
-                $.each(cursos_recientes, function(index, value) {
-                    $('#cursos_recientes').append(
-                        '<div class="d-flex flex-row comment-row p-3 mt-0">' +
-                        '<div class="comment-text ps-2 ps-md-3 w-100">' +
-                        '<h5 class="font-medium">' + value.name + '</h5>' +
-                        '<span class="mb-3 d-block">' + value.description + '</span>' +
-                        '<div class="comment-footer d-md-flex align-items-center">' +
-                        '<span class="badge bg-primary rounded">' + value.status + '</span>' +
-                        '<div class="text-muted fs-2 ms-auto mt-2 mt-md-0">' + value.created_at + '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>'
-                    );
-                });
-
-                $.each(cursos_todos, function(index, value) {
+                $.each(usuarios, function(index, value) {
                     $('#cursos_todos').append(
                         '<tr>' +
                         '<td>' + value.id + '</td>' +
                         '<td>' + value.name + '</td>' +
-                        '<td>' + value.description + '</td>' +
+                        '<td>' + value.email + '</td>' +
                         '<td>' +
-                        '<a href="ver_curso.php?id=' + value.id + '" class="mr-4">' +
+                        '<a href="ver_usuario.php?id=' + value.id + '" class="mr-4">' +
                         '<button class="btn btn-primary">Ver</button>' +
                         '</a>' +
                         // boton editar curso
-                        '<a href="editar_curso.php?id=' + value.id + '" class="mr-4">' +
+                        '<a href="editar_usuario.php?id=' + value.id + '" class="mr-4">' +
                         '<button class="btn btn-warning">Editar</button>' +
                         '</a>' +
+                        '<a href="actualizar_contraseña.php?id=' + value.id + '" class="mr-4">' +
+                        '<button class="btn btn-info text-white">Cambiar contraseña</button>' +
+                        '</a>' +
                         // boton eliminar curso con modal
-                        '<button class="btn btn-danger text-white" onclick="eliminar_curso(' + value.id + ')">Eliminar</button>' +
+                        '<button class="btn btn-danger text-white" onclick="eliminar_usuario(' + value.id + ')">Eliminar</button>' +
                         '</td>' +
                         '</tr>'
                     );
@@ -172,7 +119,7 @@
 
     });
 
-    function eliminar_curso(id) {
+    function eliminar_usuario(id) {
         Swal.fire({
             title: '¿Estas seguro?',
             text: "No podras revertir esto!",
@@ -184,7 +131,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: api + 'curses/' + id,
+                    url: api + 'users/' + id,
                     headers: {
                         'Authorization': 'Bearer ' + token
                     },
